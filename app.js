@@ -22,10 +22,26 @@ app.get("/data", function(req,res){
 		for(parser in parsedData){
 			names.push(parsedData[parser]["first"]+" "+parsedData[parser]["last"]);
 		}
-		console.log(names);
+		console.log("names sent");
 		res.render("data",{names:names});
 	}
+	});
 });
+app.get("/currency", function(req,res){
+	res.render("currency");
+});
+app.get("/results", function(req,res){
+	var from = req.query.from_currency;
+	var to = req.query.to_currency;
+	var amount = req.query.amount;
+	var code = from+"_"+to;
+	var url = "https://free.currconv.com/api/v7/convert?q="+code+"&compact=ultra&apiKey=dd8e835c3d0a875afe5e";
+	request(url, function(error, response, body){
+        if(!error && response.statusCode == 200) {
+            var data = JSON.parse(body)
+            res.render("results", {value: data[code]*amount});
+        }
+    });
 });
 
 var port = process.env.port || 3000;
