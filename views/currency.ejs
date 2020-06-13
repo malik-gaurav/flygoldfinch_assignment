@@ -11,9 +11,9 @@
 }
 </style>
 
-<h1>currency</h1>
+<h1>Currency Convertor</h1>
 <form action="/results" method="GET">
-  <select id="from_currency" name="from_currency">
+  <select id="from_currency" name="from_currency" class="btn btn-primary" required>
     <option value="" disabled selected>From Currency</option>
     <option value="XCD">East Caribbean Dollar</option>
     <option value="EUR">European Euro</option>
@@ -26,7 +26,7 @@
     <option value="LSL">Lesotho Loti</option>
     <option value="USD">US Dollar</option>
   </select>
-  <select id="to_currency" name="to_currency">
+  <select id="to_currency" name="to_currency"class="btn btn-secondary" required>
   	<option value="" disabled selected>To Currency</option>
     <option value="XCD">East Caribbean Dollar</option>
     <option value="EUR">European Euro</option>
@@ -39,8 +39,8 @@
     <option value="LSL">Lesotho Loti</option>
     <option value="USD">US Dollar</option>
   </select>
-  <input type="text" name="amount" placeholder="Amount(number)">
-  <input type="submit">
+  <input type="text" name="amount" placeholder="Amount(number)" required>
+  <input type="submit" class="btn btn-lg btn-success">
 </form>
 
 <h4 class="page">
